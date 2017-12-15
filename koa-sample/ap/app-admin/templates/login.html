@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Login</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/css/base.css">
+    <link rel="stylesheet" href="/css/admin.css">
+</head>
+<body>
+
+<h1>Login</h1>
+
+{{>navpartial}}
+
+<main>
+
+{{#if user}}
+
+<p>You are currently logged in as {{user.Firstname}} {{user.Lastname}}
+    (with {{user.Role}} privileges).</p>
+
+{{else}}
+
+<form method="post">
+    <ul>
+        <li>
+            <label for="username">E-mail</label>
+            <input name="username" id="username" type="email" value="{{@koa.flash.formdata.username}}" required autofocus>
+        </li>
+        <li>
+            <label for="password">Password</label>
+            <input name="password" id="password" type="password" required>
+        </li>
+        <li>
+            <label></label>
+            <input type="checkbox" name="remember-me" id="remember-me">
+            <label for="remember-me" title="for up to 7 days inactivity" class="grey">remember me</label>
+        </li>
+        <li>
+            <label></label>
+            <button type="submit" class="fa fa-check-square-o green" title="Login"></button>
+            {{#if @koa.flash.loginfailmsg}}<span class="error-msg">{{@koa.flash.loginfailmsg}}</span>{{/if}}
+        </li>
+    </ul>
+</form>
+
+<p><a href="/password/reset-request">Forgotten password</a></p>
+
+<p>Test logins:</p>
+<ul>
+    <li><i>guest@user.com/guest</i> for read-only access</li>
+    <li><i>admin@user.com/admin</i> for full access</li>
+</ul>
+
+{{/if}}
+
+</main>
+
+</body>
+</html>
