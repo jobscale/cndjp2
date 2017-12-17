@@ -108,8 +108,8 @@ Kubernetesには様々なオブジェクトがありますが、それらをク�
 ### 1-1. 最初のmanifestファイルを作成する
 まず、適当なフォルダを作成し、それをカレントディレクトリにしておきます。
 
-    > mkdir ~/cndjp2
-    > cd cndjp2
+    > mkdir ~/k8s-logging
+    > cd ~/k8s-logging
 
 counter.yamlというファイルを作成します。
 
